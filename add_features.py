@@ -43,19 +43,18 @@ def add_features(file_path):
 
     if modified:
         df.to_csv(file_path, index=False)
-        print(f"✅ Archivo actualizado: {file_path}")
+        print(f"Archivo actualizado: {file_path}")
     else:
-        print(f"ℹ️ El archivo {file_path} ya contenía las variables. No se realizaron cambios.")
+        print(f"ℹEl archivo {file_path} ya contenía las variables. No se realizaron cambios.")
 
 if __name__ == "__main__":
-    # buscar todos los archivos .csv en el directorio actual
     csv_files = glob.glob("*.csv")
     
     if not csv_files:
         print("No se encontraron archivos CSV en el directorio.")
     else:
         for file in csv_files:
-            # filtramos por los archivos de clima
+            # filtrar
             if "weather_curico" in os.path.basename(file):
                 add_features(file)
             else:
