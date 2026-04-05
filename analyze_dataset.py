@@ -9,7 +9,7 @@ df = pd.read_csv(archivo)
 df["date"] = pd.to_datetime(df["date"])
 
 print("===================================")
-print("📊 RESUMEN GENERAL")
+print("RESUMEN GENERAL")
 print("===================================")
 
 print(f"Filas: {df.shape[0]}")
@@ -18,12 +18,8 @@ print(f"Columnas: {df.shape[1]}")
 print("\nColumnas:")
 print(df.columns.tolist())
 
-
-# -----------------------------------
-# ⏱️ TIEMPO
-# -----------------------------------
 print("\n===================================")
-print("⏱️ PERÍODO DE TIEMPO")
+print("PERÍODO DE TIEMPO")
 print("===================================")
 
 print(f"Fecha inicio: {df['date'].min()}")
@@ -38,13 +34,10 @@ print(f"Número de timestamps únicos: {df['date'].nunique()}")
 print("\nFrecuencia estimada:")
 print(df["date"].diff().value_counts().head())
 
-# -----------------------------------
-# 📅 ANÁLISIS POR MES (MUY PRO)
-# -----------------------------------
 df["month"] = df["date"].dt.month
 
 print("\n===================================")
-print("📅 REGISTROS POR MES")
+print("REGISTROS POR MES")
 print("===================================")
 
 print(df["month"].value_counts().sort_index())
@@ -52,11 +45,8 @@ print(df["month"].value_counts().sort_index())
 print("\nDistribución por mes y clima:")
 print(pd.crosstab(df["month"], df["weather_condition"]))
 
-# -----------------------------------
-# NULOS
-# -----------------------------------
 print("\n===================================")
-print("❗ VALORES NULOS")
+print("VALORES NULOS")
 print("===================================")
 
 nulos = df.isnull().sum()
@@ -64,11 +54,8 @@ print(nulos)
 
 print(f"\nTotal nulos: {nulos.sum()}")
 
-# -----------------------------------
-# WEATHER CONDITION
-# -----------------------------------
 print("\n===================================")
-print("🌤️ DISTRIBUCIÓN weather_condition")
+print("DISTRIBUCIÓN weather_condition")
 print("===================================")
 
 conteo = df["weather_condition"].value_counts()
@@ -78,40 +65,30 @@ print("\nPorcentaje:")
 porcentaje = (df["weather_condition"].value_counts(normalize=True) * 100).round(2)
 print(porcentaje)
 
-# -----------------------------------
-# UNKNOWN
-# -----------------------------------
 print("\n===================================")
-print("❓ UNKNOWN")
+print("UNKNOWN")
 print("===================================")
 
 unknown_count = (df["weather_condition"] == "Unknown").sum()
 print(f"Unknown: {unknown_count}")
 print(f"% Unknown: {(unknown_count / len(df) * 100):.2f}%")
 
-# -----------------------------------
-# ESTADÍSTICAS NUMÉRICAS
-# -----------------------------------
+
 print("\n===================================")
-print("📈 ESTADÍSTICAS NUMÉRICAS")
+print("ESTADÍSTICAS NUMÉRICAS")
 print("===================================")
 
 print(df.describe())
 
-# -----------------------------------
-# INFO GENERAL
-# -----------------------------------
+
 print("\n===================================")
-print("📋 INFO DATASET")
+print("INFO DATASET")
 print("===================================")
 
 df.info()
 
-# -----------------------------------
-# EXTRA PRO (para el informe)
-# -----------------------------------
 print("\n===================================")
-print("💡 INSIGHTS CLAVE")
+print("INSIGHTS CLAVE")
 print("===================================")
 
 print(f"- Total observaciones: {len(df)}")
