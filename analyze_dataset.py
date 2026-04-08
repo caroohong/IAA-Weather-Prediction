@@ -1,6 +1,6 @@
 import pandas as pd
 
-archivo = "weather_curico_2025.csv"  # usa tu CSV final
+archivo = "weather_curico_preprocessed.csv"  # usa tu CSV final
 
 df = pd.read_csv(archivo)
 
